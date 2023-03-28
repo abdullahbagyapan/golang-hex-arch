@@ -30,13 +30,13 @@ func (apiA Adapter) GetAddition(a, b int32) (int32, error) {
 		log.Printf("Error to save db %s", err)
 	}
 
-	msg := fmt.Sprintf("Addition(%d,%d) used at %v", a, b, time.Now())
-
-	err = apiA.msgBroker.PublishMessage(msg)
-
-	if err != nil {
-		log.Printf("Error to publish message %s", err)
-	}
+	go func() {
+		msg := fmt.Sprintf("Addition(%d,%d) used at %v", a, b, time.Now())
+		err := apiA.msgBroker.PublishMessage(msg)
+		if err != nil {
+			log.Printf("Error to publish message %s", err)
+		}
+	}()
 
 	return answer, nil
 
@@ -53,13 +53,14 @@ func (apiA Adapter) GetMultiplication(a, b int32) (int32, error) {
 	if err != nil {
 		log.Printf("Error to save db %s", err)
 	}
-	msg := fmt.Sprintf("Multiplication(%d,%d) used at %v", a, b, time.Now())
 
-	err = apiA.msgBroker.PublishMessage(msg)
-
-	if err != nil {
-		log.Printf("Error to publish message %s", err)
-	}
+	go func() {
+		msg := fmt.Sprintf("Multiplication(%d,%d) used at %v", a, b, time.Now())
+		err := apiA.msgBroker.PublishMessage(msg)
+		if err != nil {
+			log.Printf("Error to publish message %s", err)
+		}
+	}()
 
 	return answer, nil
 }
@@ -74,13 +75,15 @@ func (apiA Adapter) GetDivision(a, b int32) (int32, error) {
 	if err != nil {
 		log.Printf("Error to save db %s", err)
 	}
-	msg := fmt.Sprintf("Division(%d,%d) used at %v", a, b, time.Now())
 
-	err = apiA.msgBroker.PublishMessage(msg)
+	go func() {
+		msg := fmt.Sprintf("Division(%d,%d) used at %v", a, b, time.Now())
+		err := apiA.msgBroker.PublishMessage(msg)
+		if err != nil {
+			log.Printf("Error to publish message %s", err)
+		}
+	}()
 
-	if err != nil {
-		log.Printf("Error to publish message %s", err)
-	}
 	return answer, nil
 }
 func (apiA Adapter) GetSubtraction(a, b int32) (int32, error) {
@@ -94,12 +97,14 @@ func (apiA Adapter) GetSubtraction(a, b int32) (int32, error) {
 	if err != nil {
 		log.Printf("Error to save db %s", err)
 	}
-	msg := fmt.Sprintf("Subtraction(%d,%d) used at %v", a, b, time.Now())
 
-	err = apiA.msgBroker.PublishMessage(msg)
+	go func() {
+		msg := fmt.Sprintf("Subtraction(%d,%d) used at %v", a, b, time.Now())
+		err := apiA.msgBroker.PublishMessage(msg)
+		if err != nil {
+			log.Printf("Error to publish message %s", err)
+		}
+	}()
 
-	if err != nil {
-		log.Printf("Error to publish message %s", err)
-	}
 	return answer, nil
 }
