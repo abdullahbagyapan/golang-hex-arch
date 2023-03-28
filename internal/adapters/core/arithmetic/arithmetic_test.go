@@ -7,7 +7,7 @@ import (
 )
 
 func TestAddition(t *testing.T) {
-	arith := NewAdapter()
+	arith := NewArithmeticAdapter()
 
 	var value1 int32 = 10
 	var value2 int32 = 20
@@ -24,7 +24,7 @@ func TestAddition(t *testing.T) {
 }
 
 func TestDivision(t *testing.T) {
-	arith := NewAdapter()
+	arith := NewArithmeticAdapter()
 
 	var value1 int32 = 10
 	var value2 int32 = 20
@@ -41,7 +41,7 @@ func TestDivision(t *testing.T) {
 
 }
 func TestMultiplication(t *testing.T) {
-	arith := NewAdapter()
+	arith := NewArithmeticAdapter()
 
 	var value1 int32 = 10
 	var value2 int32 = 20
@@ -58,7 +58,7 @@ func TestMultiplication(t *testing.T) {
 
 }
 func TestSubtraction(t *testing.T) {
-	arith := NewAdapter()
+	arith := NewArithmeticAdapter()
 
 	var value1 int32 = 10
 	var value2 int32 = 20
